@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
-
-		F4FF95D7245B92E800C19C63 /*  SmartconfigSwjava.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /*  SmartconfigSwjava.swift */; };
-
-		5E555C0D2413F4C50049A1A2 /* SmartconfigSwjava.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* SmartconfigSwjava.mm */; };
+		2D751D1CE6B485D5F85616E6 /* Pods_SmartconfigSwjava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D696117DAC7FC00DEDEE69E /* Pods_SmartconfigSwjava.framework */; };
+		AE94B55024FF8CB100AF58C0 /* bride.m in Sources */ = {isa = PBXBuildFile; fileRef = AE94B54F24FF8CB100AF58C0 /* bride.m */; };
+		AE94B55224FF8DF900AF58C0 /* getwifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE94B55124FF8DF900AF58C0 /* getwifi.swift */; };
+		F4FF95D7245B92E800C19C63 /* SmartconfigSwjava.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /* SmartconfigSwjava.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,13 +26,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D696117DAC7FC00DEDEE69E /* Pods_SmartconfigSwjava.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartconfigSwjava.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		134814201AA4EA6300B7C361 /* libSmartconfigSwjava.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSmartconfigSwjava.a; sourceTree = BUILT_PRODUCTS_DIR; };
-
-
+		3ED14D024A8C8211538B0C6E /* Pods-SmartconfigSwjava.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartconfigSwjava.release.xcconfig"; path = "Target Support Files/Pods-SmartconfigSwjava/Pods-SmartconfigSwjava.release.xcconfig"; sourceTree = "<group>"; };
+		AE94B54F24FF8CB100AF58C0 /* bride.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bride.m; sourceTree = "<group>"; };
+		AE94B55124FF8DF900AF58C0 /* getwifi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getwifi.swift; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* SmartconfigSwjava.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartconfigSwjava.m; sourceTree = "<group>"; };
+		D9F28220FA7B13F744BC0CC4 /* Pods-SmartconfigSwjava.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartconfigSwjava.debug.xcconfig"; path = "Target Support Files/Pods-SmartconfigSwjava/Pods-SmartconfigSwjava.debug.xcconfig"; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* SmartconfigSwjava-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartconfigSwjava-Bridging-Header.h"; sourceTree = "<group>"; };
 		F4FF95D6245B92E800C19C63 /* SmartconfigSwjava.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartconfigSwjava.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D751D1CE6B485D5F85616E6 /* Pods_SmartconfigSwjava.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,17 +57,35 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		18CB6857603DFEA2618BCFAA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D9F28220FA7B13F744BC0CC4 /* Pods-SmartconfigSwjava.debug.xcconfig */,
+				3ED14D024A8C8211538B0C6E /* Pods-SmartconfigSwjava.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-
-
+				AE94B55124FF8DF900AF58C0 /* getwifi.swift */,
+				AE94B54F24FF8CB100AF58C0 /* bride.m */,
 				F4FF95D6245B92E800C19C63 /* SmartconfigSwjava.swift */,
 				B3E7B5891CC2AC0600A0062D /* SmartconfigSwjava.m */,
 				F4FF95D5245B92E700C19C63 /* SmartconfigSwjava-Bridging-Header.h */,
-
 				134814211AA4EA7D00B7C361 /* Products */,
+				18CB6857603DFEA2618BCFAA /* Pods */,
+				7C1B3E2A28AF4979F0E08C9A /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		7C1B3E2A28AF4979F0E08C9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D696117DAC7FC00DEDEE69E /* Pods_SmartconfigSwjava.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -75,6 +95,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "SmartconfigSwjava" */;
 			buildPhases = (
+				D5A63DCACD5C95D099F40F2E /* [CP] Check Pods Manifest.lock */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
@@ -120,16 +141,39 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D5A63DCACD5C95D099F40F2E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartconfigSwjava-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
-
+				AE94B55024FF8CB100AF58C0 /* bride.m in Sources */,
 				F4FF95D7245B92E800C19C63 /* SmartconfigSwjava.swift in Sources */,
-				B3E7B58A1CC2AC0600A0062D /* SmartconfigSwjava.m in Sources */,
-
+				AE94B55224FF8DF900AF58C0 /* getwifi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +275,7 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9F28220FA7B13F744BC0CC4 /* Pods-SmartconfigSwjava.debug.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -242,16 +287,15 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = SmartconfigSwjava;
 				SKIP_INSTALL = YES;
-
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartconfigSwjava-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3ED14D024A8C8211538B0C6E /* Pods-SmartconfigSwjava.release.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -263,10 +307,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = SmartconfigSwjava;
 				SKIP_INSTALL = YES;
-
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartconfigSwjava-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-
 			};
 			name = Release;
 		};
