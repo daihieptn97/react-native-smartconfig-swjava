@@ -1,7 +1,7 @@
 import UIKit
 
 @objc(SmartconfigSwjava)
-class SmartconfigSwjava: NSObject {
+class SmartconfigSwjava: RCTEventEmitter {
     
     
     var SSID:String = ""
@@ -9,14 +9,13 @@ class SmartconfigSwjava: NSObject {
     var BSSID:String = ""
     
     var isConfirmState: Bool!
-    
     var condition:NSCondition!
     var esptouchTask: ESPTouchTask!
     //
-    var wifiPass = "66668888"
-    var wifiName = "Thu Hung"
-    
+    @objc var wifiPass = ""
+    @objc var wifiName = "Thu Hung"
     var ipResult = "";
+    
     
     
     @objc(hahaha123123:withB:withResolver:withRejecter:)
@@ -25,52 +24,10 @@ class SmartconfigSwjava: NSObject {
     }
     
     
-    @objc(hihihiih:withRejecter:)
-    func hihihiih(resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
-        resolve(["hello"  : 123])
-    }
-    
-    @objc var onUpdate: RCTPromiseResolveBlock?
-    
-    
-    @objc func sendUpdate() {
-        if onUpdate != nil {
-            print("onUpdate call ")
-            onUpdate!(ipResult)
-        }else {
-            print("onUpdate null")
-        }
-    }
-    
+
     @objc(startConfig:withRejecter:)
-    func startConfig(resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
-        resolve("Pedding config")
-        
-        if isConnectWiFi() {
-            if wifiPass != "" {
-                SSID = getwifi().getSSID()!
-                PASS = wifiPass
-                BSSID = getwifi().getBSSID()!
-                
-                print("SSID" , SSID, "PASS", PASS)
-                
-                self.tapConfirmForResult(resolve: resolve, reject: reject)
-                //                DispatchQueue.main.asyncAfter(deadline: .now() + 60.0) { // Change `2.0` to the desired number of seconds.
-                //                    // Code you want to be delayed
-                //                    print("End 15s")
-                //                    self.cancel()
-                //
-                //                }
-            } else {
-                print("wifiPass null")
-                resolve("wifiPass null");
-            }
-            
-        } else {
-            print("wifi disconnected")
-            resolve("wifi disconnected");
-            return
-        }
+    func startConfig(resolve: @escaping(RCTResponseSenderBlock),reject:RCTPromiseRejectBlock) -> Void {
+      
     }
     
     init(fromString string: NSString) {
@@ -83,8 +40,6 @@ class SmartconfigSwjava: NSObject {
     convenience override init() {
         self.init(fromString:"John") // calls above mentioned controller with default name
     }
-    
-    
     
     func isConnectWiFi() -> Bool {
         print("isConnectWiFi")
@@ -104,36 +59,6 @@ class SmartconfigSwjava: NSObject {
         let text = NSLocalizedString("WIFI_CONNECTED", comment: "")
         wifiName = text + wifiSSID!
     }
-    
-    
-    func tapConfirmForResult(resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) {
-        print("tapConfirmForResult")
-        //        resolve("tapConfirmForResult");
-        self.ipResult = "tapConfirmForResult";
-        self.sendUpdate();
-        print("Configuration in progress...")
-        let queue = DispatchQueue.global(qos: .default)
-        queue.async {
-            print("Thread is working...")
-            let esptouchResult: ESPTouchResult = self.executeForResult()
-            DispatchQueue.main.async(execute: {
-                if !esptouchResult.isCancelled {
-                    //                        UIAlertView(title: resultTitle, message: esptouchResult.description, delegate: nil, cancelButtonTitle: confirmSring).show()
-                    print(" esptouchResult.description",  esptouchResult.description)
-                    // IP拼接
-                    
-                    let strIP = String(esptouchResult.ipAddrData[0]) + "." + String(esptouchResult.ipAddrData[1]) + "." + String(esptouchResult.ipAddrData[2]) + "." + String(esptouchResult.ipAddrData[3])
-                    print("⭕️\(strIP)")
-                    self.ipResult = strIP;
-                    self.sendUpdate();
-                    //                        resolve(strIP)
-                    
-                }
-            })
-        }
-        
-    }
-    
     
     
     /* Configuration result */
@@ -159,4 +84,82 @@ class SmartconfigSwjava: NSObject {
         condition.unlock()
     }
     
+    
+    override func supportedEvents() -> [String]! {
+        return ["MyEvent", "MyEvent1", "SmartConfig"]
+    }
+    
+    func getResponseRN(data:ResultDataToRN) -> Any {
+        return ["status": data.status , "message" : data.message, "data":  data.data, "ip": data.ip]
+      }
+    
+    // Takes an errorCallback as a parameter so that you know when things go wrong.
+    // This will make more sense once we get to the Javascript
+    // ["status": "penđing smartconfig", "data" : nil]
+    //
+    
+    @objc func doSomethingThatHasMultipleResults( _ errorCallback: @escaping RCTResponseSenderBlock) {
+        print("wifiName", wifiName)
+        print("wifiPass", wifiPass)
+        var res = ResultDataToRN()
+        res.message = "penđing smartconfig"
+        print(res)
+        self.sendEvent(withName: "SmartConfig", body: getResponseRN(data: res) )
+        if isConnectWiFi() {
+            if wifiPass != "" {
+                SSID = getwifi().getSSID()!
+                PASS = wifiPass
+                BSSID = getwifi().getBSSID()!
+                
+                print("SSID" , SSID, "PASS", PASS)
+                print("Configuration in progress...")
+                
+                res.message = "Configuration in progress... \(SSID) - \(PASS) - \(BSSID)" as NSString;
+                
+                self.sendEvent(withName: "SmartConfig", body : self.getResponseRN(data: res))
+                //resolve(["Configuration in progress..."])
+                let queue = DispatchQueue.global(qos: .default)
+                queue.async {
+                    print("Thread is working...")
+        
+                    res.message =  "Thread is working..."
+                    self.sendEvent(withName: "SmartConfig", body: self.getResponseRN(data: res))
+                    
+                    let esptouchResult: ESPTouchResult = self.executeForResult()
+                    DispatchQueue.main.async(execute: {
+                        if !esptouchResult.isCancelled {
+                            print(" esptouchResult.description",  esptouchResult.description)
+                            // IP拼接
+             
+                            res.data = esptouchResult.description;
+                            res.status = true
+                            res.message = "Smartconfig complate"
+                            res.ip = esptouchResult.getAddressString()
+                            self.sendEvent(withName: "SmartConfig", body: self.getResponseRN(data: res))
+                        }
+                    })
+                }
+                
+            } else {
+                print("wifiPass null")
+                res.message = "wifiPass null"
+                self.sendEvent(withName: "SmartConfig", body: self.getResponseRN(data: res))
+            }
+            
+        } else {
+            print("wifi disconnected")
+            res.message = "Wifi not connected";
+            self.sendEvent(withName: "SmartConfig", body: self.getResponseRN(data: res))
+            return
+        }
+    }
+    
+}
+
+
+struct ResultDataToRN {
+    var data: String = ""
+    var status: Bool = false
+    var message: NSString = ""
+    var ip:String = ""
 }

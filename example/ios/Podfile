@@ -64,6 +64,8 @@ target 'SmartconfigSwjavaExample' do
   add_flipper_pods!
 
 
+  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
+
   post_install do |installer|
     flipper_post_install(installer)
   end

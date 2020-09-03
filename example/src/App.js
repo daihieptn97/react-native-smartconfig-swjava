@@ -1,34 +1,35 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, NativeEventEmitter, NativeModules } from 'react-native';
 import SmartconfigSwjava from 'react-native-smartconfig-swjava';
-// import Geolocation from '@react-native-community/geolocation';
+import Geolocation from '@react-native-community/geolocation';
 
 export default function App() {
   const [result, setResult] = React.useState();
   console.log(SmartconfigSwjava);
-  console.log(SmartconfigSwjava.getConstants());
 
 
   React.useEffect(() => {
 
-    let a = SmartconfigSwjava.onUpdate();
-    console.log(a);
+    // SmartconfigSwjava.doSomethingThatHasMultipleResults((a, b) => console.log(a, b))
+
+    // let a = SmartconfigSwjava.onUpdate();
+    // console.log(a);
     // SmartconfigSwjava.hahaha123123(300, 7).then(setResult);
 
-    // Geolocation.requestAuthorization();
-    // Geolocation.getCurrentPosition(info => console.log(info), e => {
-    //   Alert.alert('Thông báo', 'Bạn cần cho phép quyền truy cập vị trí để sử dụng tính năng này', [
-    //     {
-    //       text: 'Đồng ý',
-    //       onPress: () => {
-    //         // this.props.navigation.goBack()
-    //         Linking.openURL('app-settings:1');
-    //       }
-    //       ,
-    //       style: 'cancel',
-    //     },
-    //   ]);
-    // });
+    Geolocation.requestAuthorization();
+    Geolocation.getCurrentPosition(info => console.log(info), e => {
+      Alert.alert('Thông báo', 'Bạn cần cho phép quyền truy cập vị trí để sử dụng tính năng này', [
+        {
+          text: 'Đồng ý',
+          onPress: () => {
+            // this.props.navigation.goBack()
+            Linking.openURL('app-settings:1');
+          }
+          ,
+          style: 'cancel',
+        },
+      ]);
+    });
 
   });
 
@@ -36,8 +37,10 @@ export default function App() {
     <View style={styles.container}>
       <Text>Result: {JSON.stringify(result)}</Text>
       <TouchableOpacity onPress={() => {
-        SmartconfigSwjava.startConfig().then(setResult);
-
+        // SmartconfigSwjava.startConfig().then(setResult);
+        SmartconfigSwjava.doSomethingThatHasMultipleResultsOK((a, b) => {
+          console.log(b);
+        });
       }}>
         <Text>
           Config
@@ -45,7 +48,7 @@ export default function App() {
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

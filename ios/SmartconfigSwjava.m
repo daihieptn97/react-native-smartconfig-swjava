@@ -1,4 +1,5 @@
 #import <React/RCTBridgeModule.h>
+#import "React/RCTViewManager.h"
 
 @interface RCT_EXTERN_MODULE(SmartconfigSwjava, NSObject)
 
@@ -13,9 +14,14 @@ RCT_EXTERN_METHOD(hihihiih:
 
 
 RCT_EXTERN_METHOD(startConfig:
-                 (RCTPromiseResolveBlock)resolve
+                 (RCTResponseSenderBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(onUpdate)
+
+RCT_EXPORT_VIEW_PROPERTY(wifiName, NSString)
+RCT_EXPORT_VIEW_PROPERTY(wifiPass, NSString)
+
+RCT_EXTERN_METHOD(doSomethingThatHasMultipleResults: (RCTResponseSenderBlock *)errorCallback )
 
 @end
