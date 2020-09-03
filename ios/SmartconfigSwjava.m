@@ -1,21 +1,11 @@
 #import <React/RCTBridgeModule.h>
+#import "React/RCTViewManager.h"
 
 @interface RCT_EXTERN_MODULE(SmartconfigSwjava, NSObject)
 
-RCT_EXTERN_METHOD(hahaha123123:(float)a withB:(float)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(stop)
 
-
-RCT_EXTERN_METHOD(hihihiih:
-                 (RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
-
-
-RCT_EXTERN_METHOD(startConfig:
-                 (RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
-
-RCT_EXTERN_METHOD(onUpdate)
+RCT_EXTERN_METHOD(start: (NSString *)ssid bssid:(NSString *)bssid password:(NSString *)password timeScan:(NSInteger)timeScan
+                errorCallback:(RCTResponseSenderBlock *)errorCallback )
 
 @end
