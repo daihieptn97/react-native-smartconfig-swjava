@@ -30,9 +30,9 @@
     "bootstrap": "yarn example && yarn && yarn pods"
   },
   "keywords": [
-    "react-native",
-    "ios",
-    "android"
+    "react-native-smartconfig",
+    "smartconfig",
+    "ESP8266"
   ],
   "repository": "https://github.com/daihieptn97/react-native-smartconfig-swjava",
   "author": "hieptran <daihieptn97@gmail.com> (https://github.com/daihieptn97)",
