@@ -30,13 +30,23 @@ class SmartconfigSwjava: NSObject {
         resolve(["hello"  : 123])
     }
     
-    @objc var onUpdate: RCTPromiseResolveBlock?
+    @objc var onUpdate: RCTResponseSenderBlock?
+    
+    var things = [Any]()
+
     
     
     @objc func sendUpdate() {
+        
+        things.append(1000)
+        things.append(0200.0)
+        
         if onUpdate != nil {
             print("onUpdate call ")
-            onUpdate!(ipResult)
+            
+       
+            
+            onUpdate!(things)
         }else {
             print("onUpdate null")
         }

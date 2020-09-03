@@ -11,7 +11,7 @@ export default function App() {
 
   React.useEffect(() => {
 
-    let a = SmartconfigSwjava.onUpdate();
+    let a = SmartconfigSwjava.onUpdate().then(e => console.log(e));
     console.log(a);
     // SmartconfigSwjava.hahaha123123(300, 7).then(setResult);
 
