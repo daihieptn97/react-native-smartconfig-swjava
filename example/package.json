@@ -9,10 +9,10 @@
     "start": "react-native start"
   },
   "dependencies": {
-    "@react-native-community/geolocation": "^2.0.2",
-    "@react-native-community/netinfo": "^5.9.6",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "@react-native-community/geolocation": "^2.0.2",
+    "@react-native-community/netinfo": "^5.9.6",
     "react-native-network-info": "^5.2.1"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 # react-native-smartconfig-swjava
 
-no 
+no
 
 ## Installation
 

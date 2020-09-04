@@ -1,6 +1,0 @@
-framework module Pods_SmartconfigSwjava {
-  umbrella header "Pods-SmartconfigSwjava-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -11,7 +11,7 @@ module.exports = {
   start(ssid, bssid, password, timeScan, callback) {
     this.emitter.addListener(
       'SmartConfig',
-      response => callback( response),
+      response => callback(response),
     );
     SmartconfigSwjava.start(ssid, bssid, password, timeScan, callback);
   },
