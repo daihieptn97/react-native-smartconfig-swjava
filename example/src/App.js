@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import SmartconfigSwjava from 'react-native-smartconfig-swjava';
+import { startSmartConfig, stopSmartConfig } from 'react-native-smartconfig-swjava';
 import NetInfo from '@react-native-community/netinfo';
 import { NetworkInfo } from 'react-native-network-info';
 
@@ -65,7 +65,7 @@ export default function App() {
           margin: 12,
         }}
         onPress={() => {
-          SmartconfigSwjava.start(ssid, bssid, password, 31000, (response) => {
+          stopSmartConfig(ssid, bssid, password, 31000, (response) => {
             console.log(response);
             setResult(response);
           });
@@ -87,7 +87,7 @@ export default function App() {
           margin: 12,
         }}
         onPress={() => {
-          // SmartconfigSwjava.stop();
+          stopSmartConfig();
         }}>
         <Text style={{ color: 'white' }}>
           Stop

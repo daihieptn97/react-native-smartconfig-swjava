@@ -1,21 +1,21 @@
-import { NativeEventEmitter, NativeModules } from 'react-native';
+import {NativeEventEmitter, NativeModules} from 'react-native';
 
 let {
   SmartconfigSwjava,
 } = NativeModules;
 
-console.log(SmartconfigSwjava);
 
-module.exports = {
-  emitter: new NativeEventEmitter(SmartconfigSwjava),
-  start(ssid, bssid, password, timeScan, callback) {
-    this.emitter.addListener(
-      'SmartConfig',
-      response => callback(response),
-    );
-    SmartconfigSwjava.start(ssid, bssid, password, timeScan, callback);
-  },
-  stop() {
-    SmartconfigSwjava.stop();
-  },
+const eventEmitter = new NativeEventEmitter(SmartconfigSwjava);
+var subscription;
+
+export const startSmartConfig = (ssid, bssid, password, timeScan, callback) => {
+  if (typeof subscription !== 'undefined' && subscription) {
+    subscription.remove();
+  }
+  subscription = eventEmitter.addListener('SmartConfig', callback);
+  SmartconfigSwjava.start(ssid, bssid, password, timeScan, callback);
+};
+
+export const stopSmartConfig = () => {
+  SmartconfigSwjava.stop();
 };
