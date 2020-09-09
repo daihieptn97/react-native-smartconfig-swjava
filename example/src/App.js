@@ -9,7 +9,7 @@ export default function App() {
   const [ssid, setSsid] = React.useState();
   const [bssid, setBssid] = React.useState();
   const [password, setPassword] = React.useState('hamhoc123');
-
+  console.log(SmartconfigSwjava);
 
 //Lấy thông tin ssid và bssid của wifi
 

@@ -23,7 +23,7 @@ cd ios && pod install
 
 - stopSmartConfig(): function
 
-##Example
+## Example
 
 ```js
 import * as React from 'react';
