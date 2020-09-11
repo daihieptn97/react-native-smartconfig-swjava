@@ -76,7 +76,7 @@ class SmartconfigSwjava: RCTEventEmitter {
         print(res)
         //self.sendEvent(withName: "SmartConfig", body: getResponseRN(data: res) )
         if !ssid.isEmpty {
-            if !password.isEmpty {
+//            if !password.isEmpty {
                 SSID = ssid
                 PASS = password
                 BSSID = bssid
@@ -117,11 +117,11 @@ class SmartconfigSwjava: RCTEventEmitter {
                     })
                 }
                 
-            } else {
-                print("wifiPass null")
-                res.message = "wifiPass null"
-                self.sendEvent(withName: "SmartConfig", body: self.getResponseRN(data: res))
-            }
+//            } else {
+//                print("wifiPass null")
+//                res.message = "wifiPass null"
+//                self.sendEvent(withName: "SmartConfig", body: self.getResponseRN(data: res))
+//            }
             
         } else {
             print("wifi disconnected")

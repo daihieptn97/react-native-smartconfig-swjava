@@ -1,6 +1,6 @@
 {
   "name": "react-native-smartconfig-swjava",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "no",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
